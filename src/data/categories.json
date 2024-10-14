@@ -1,0 +1,30 @@
+[
+        
+        {
+            "id": 1,
+            "title": "Burguers",
+            "image": "https://i.postimg.cc/59Zc0WPx/burguer.jpg"
+        },
+        {
+            "id": 2,
+            "title": "Pizzas",
+            "image": "https://i.postimg.cc/ydk51Lcg/pizza.jpg"
+        },
+        {
+            "id": 3,
+            "title": "Papas",
+            "image": "https://i.postimg.cc/SKZ3bB2b/papas.jpg"
+        },
+        {
+            "id": 4,
+            "title": "Bebidas",
+            "image": "https://i.postimg.cc/htBHLbW6/cerveza.jpg"
+        },
+        {
+            "id": 5,
+            "title": "Postres",
+            "image": "https://i.postimg.cc/GpS75vVc/postres.jpg"
+        }
+        
+    ]
+    
