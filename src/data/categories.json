@@ -2,27 +2,27 @@
         
         {
             "id": 1,
-            "title": "Burguers",
-            "image": "https://i.postimg.cc/59Zc0WPx/burguer.jpg"
+            "title": "Burgers",
+            "image": "https://i.postimg.cc/XJWcRv9c/cheeseburger-Deluxe.jpg"
         },
         {
             "id": 2,
             "title": "Pizzas",
-            "image": "https://i.postimg.cc/ydk51Lcg/pizza.jpg"
+            "image": "https://i.postimg.cc/bvP362SR/pizza-Marguerita.webp"
         },
         {
             "id": 3,
-            "title": "Papas",
-            "image": "https://i.postimg.cc/SKZ3bB2b/papas.jpg"
+            "title": "Fries",
+            "image": "https://i.postimg.cc/xqrPTtrm/papasfritasclasicas.webp"
         },
         {
             "id": 4,
-            "title": "Bebidas",
+            "title": "Drinks",
             "image": "https://i.postimg.cc/htBHLbW6/cerveza.jpg"
         },
         {
             "id": 5,
-            "title": "Postres",
+            "title": "Desserts",
             "image": "https://i.postimg.cc/GpS75vVc/postres.jpg"
         }
         

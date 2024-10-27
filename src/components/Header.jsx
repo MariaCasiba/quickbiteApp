@@ -1,12 +1,15 @@
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, useWindowDimensions } from 'react-native';
 import {colors} from "../global/colors.js";
 
 const Header = () => {
+    const {width, height} = useWindowDimensions();
+
+
     return (
-        <View style={styles.headerContainer}>
+        <View style={width<=300?styles.headerContainerSmall: styles.headerContainer}>
             <Image 
                 source={{ uri: 'https://i.postimg.cc/gk6hQ9X1/logoquickbite.webp' }} 
-                style={styles.logo} 
+                style={width<=300?styles.logoSmall: styles.logo} 
                 resizeMode="contain" 
             />
         </View>
@@ -17,15 +20,29 @@ export default Header
 
 const styles = StyleSheet.create({
     headerContainer:{
-        height:250,
+        maxHeight:230,
+        height: "35%",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: colors.beigeOscuro
+        backgroundColor: colors.beigeOscuro,
+        padding: 10
+    },
+    headerContainerSmall:{
+        maxHeight:200,
+        height: "35%",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: colors.beigeOscuro, 
+        padding: 10
     },
     logo: {
-        width: 190, 
-        height: 190, 
-        margin: 25
+        width: "85%", 
+        height: "85%", 
+    
     },
+    logoSmall: {
+        width: "60%", 
+        height: "60%", 
+    }
     
 })
