@@ -4,12 +4,16 @@ import { colors } from '../global/colors';
 import products from "../data/products.json";
 import { useEffect, useState } from 'react';
 import NunitoText from '../components/NunitoText';
+import DiscountBadge from '../components/DiscountBadge';
 
 
-const ProductScreen = ({productId, setProductId}) => {
+const ProductScreen = ({ route, navigation }) => {
     const [productFound, setProductFound] = useState({});
 
+    const productId = route.params;
+
     const {width, height} = useWindowDimensions();
+
 
     useEffect(()=>{
         setProductFound(products.find(product => product.id === productId))
@@ -17,7 +21,7 @@ const ProductScreen = ({productId, setProductId}) => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Pressable onPress={()=>setProductId(null)}><Icon style={styles.icon} name='arrow-back-ios' size={30}  /></Pressable>
+            <Pressable onPress={()=> navigation.goBack()}><Icon style={styles.icon} name='arrow-back-ios' size={30}  /></Pressable>
 
             <Text style={styles.textTitle}>{productFound.title}</Text>
             <Image 
@@ -32,21 +36,21 @@ const ProductScreen = ({productId, setProductId}) => {
                 <Text style={styles.tagText}>Tags: </Text>
                 {
                     productFound.tags?.map(tag => (
-                    <Text key={Math.random()} style={styles.tagsText}>{tag}</Text>
+                    <Text key={Math.random()} style={styles.tagText}>{tag}</Text>
                 ))}
             </View>
             {productFound.discount > 0 && (    
                 <View style={styles.discountContainer}>
-                    <NunitoText style={styles.discountText}>Promo: -{productFound.discount}%</NunitoText> 
+                    <DiscountBadge discount={productFound.discount} />
                 </View>
             )}
             {
                 productFound.stock <= 0 && <Text style={styles.noStockText}>Sin Stock</Text>
             }
             <Text style={styles.price}>Precio: $ {productFound.price}</Text>
-            <Pressable
-                style={styles.addToCartButton} 
-                >
+            <Pressable 
+                style={({ pressed }) => [{backgroundColor: pressed? colors.marronOscuro : colors.marronSuave }, styles.addToCartButton]}
+                onPress={null}>
                 <Text style={styles.textAddToCart}>Agregar al carrito</Text>
             </Pressable>
         </ScrollView>
@@ -117,7 +121,7 @@ const styles = StyleSheet.create({
     addToCartButton: {
         padding: 8,
         paddingHorizontal: 16,
-        backgroundColor: colors.marronSuave,
+        
         borderRadius: 16,
         marginVertical: 16
     },

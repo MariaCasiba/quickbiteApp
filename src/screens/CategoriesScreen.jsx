@@ -5,11 +5,10 @@ import { colors } from '../global/colors';
 import { useEffect, useState } from 'react';
 
 
-const CategoriesScreen = ({setCategory}) => {
+const CategoriesScreen = ({navigation}) => {
     const {width, height} = useWindowDimensions()
-    //console.log(width, height)
+    
 
-    //console.log(width)
     const [isPortrait, setIsPortrait] = useState(true)
 
     useEffect(()=>{
@@ -23,7 +22,7 @@ const CategoriesScreen = ({setCategory}) => {
 
     const renderCategoryItem = ({item, index}) => {
         return (
-                <Pressable onPress={()=> setCategory(item.title)} >
+                <Pressable onPress={()=>navigation.navigate('Productos', item.title)} >
 
                 <FlatCard style={
                     index%2==0?
@@ -40,18 +39,18 @@ const CategoriesScreen = ({setCategory}) => {
                 </FlatCard>
                 </Pressable>
 
-            
         )
     }
 
 
     return (
         <>
-            <Text style={styles.categoriesScreenTitle}>Nuestro menú:</Text>
+            <Text style={styles.categoriesScreenTitle}>Nuestras menú:</Text>
             <FlatList
                 data={categories}
                 keyExtractor={item=> item.id}
                 renderItem={renderCategoryItem}
+                
             />
         </>
     )
@@ -63,9 +62,10 @@ const styles = StyleSheet.create({
     categoryItemContainer:{
         justifyContent: "space-around",
         alignItems: "center",
-        marginHorizontal: 50,
+        marginHorizontal: 30,
         marginVertical:10,
         padding: 20,
+        
         
     },
     image:{

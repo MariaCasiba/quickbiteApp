@@ -1,11 +1,9 @@
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import Header from './src/components/Header';
-import CategoriesScreen from './src/screens/CategoriesScreen';
-import ProductsScreen from './src/screens/ProductsScreen';
-import ProductScreen from './src/screens/ProductScreen';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
+import TabNavigator from './src/navigation/TabNavigator';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -15,8 +13,6 @@ export default function App() {
     'Gloock': require('./assets/fonts/Gloock-Regular.ttf')
   });
 
-  const [category, setCategory] = useState("");
-  const [productId, setProductId] = useState(null);
 
   useEffect(() => {
     if (loaded || error) {
@@ -28,20 +24,9 @@ export default function App() {
     return null;
   }
 
-
   return (
     <>
-      <Header />
-      {
-        productId
-        ?
-        <ProductScreen productId={productId} setProductId={setProductId}/>
-        :
-        category
-        ?
-        <ProductsScreen category={category} setCategory={setCategory} setProductId={setProductId}/>
-        : <CategoriesScreen setCategory={setCategory} />
-      }
+      <TabNavigator />
       <StatusBar style="auto" />
     </>
   );

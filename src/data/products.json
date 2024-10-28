@@ -101,7 +101,7 @@
         "category": "Fries",
         "discount": 10,
         "tags": ["cheese", "bacon", "side"],
-        "mainImage": "https://i.postimg.cc/SKZ3bB2b/papas.jpg"
+        "mainImage": "https://i.postimg.cc/NM5Dgk7k/papas-Queso-YBacon.webp"
     },
     {
         "id": 9,
@@ -114,7 +114,7 @@
         "category": "Fries",
         "discount": 0,
         "tags": ["rustic", "crispy", "side"],
-        "mainImage": "https://i.postimg.cc/SKZ3bB2b/papas.jpg"
+        "mainImage": "https://i.postimg.cc/KzwN430S/papas-Rusticas.webp"
     },
     {
         "id": 10,
@@ -127,7 +127,7 @@
         "category": "Drinks",
         "discount": 0,
         "tags": ["beer", "cold", "refreshing"],
-        "mainImage": "https://i.postimg.cc/htBHLbW6/cerveza.jpg"
+        "mainImage": "https://i.postimg.cc/LsyvKbfs/cerveza-Rubia.webp"
     },
     {
         "id": 11,

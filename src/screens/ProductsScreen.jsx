@@ -6,13 +6,16 @@ import { colors } from '../global/colors';
 import { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Search from '../components/Search';
+import DiscountBadge from '../components/DiscountBadge';
 
 
-const ProductsScreen = ({category, setCategory, setProductId}) => {
+const ProductsScreen = ({ navigation, route }) => {
     const [productsFiltered, setProductsFiltered] = useState([]);
 
     const [search, setSearch] = useState("");
     
+    const category = route.params
+    console.log(route)
 
     useEffect(()=>{
         const productsTempFiltered = products.filter(product => product.category === category);
@@ -25,7 +28,7 @@ const ProductsScreen = ({category, setCategory, setProductId}) => {
 
     const renderProductItem = ({item})=>{
         return(
-            <Pressable onPress={()=> setProductId(item.id) }>
+            <Pressable onPress={()=> navigation.navigate("Producto", item.id) }>
             <FlatCard style={styles.productContainer}>
                 <View>
                     <Image 
@@ -47,31 +50,20 @@ const ProductsScreen = ({category, setCategory, setProductId}) => {
                                 renderItem={({item}) => (<NunitoText style={styles.tagText}>{item}</NunitoText>)}
                             />
                         }
-                    </View>
-                    
-                    {
-                        item.discount > 0 && <View style={styles.discount}>
-                                                <NunitoText style={styles.discountText}>
-                                                    Descuento: <Text style={styles.discountNumber}>{item.discount}%</Text>
-                                                </NunitoText>
-                                            </View>
-                    }
-                    {
-                        item.stock <= 0 && <NunitoText style={styles.noStockText}>Sin stock</NunitoText>
-                    }
+                    </View>  
+                    {item.discount > 0 && <DiscountBadge discount={item.discount} />}
+                    {item.stock <= 0 && <NunitoText style={styles.noStockText}>Sin stock</NunitoText>}
                     <Text style={styles.price}>Precio: $ {item.price}</Text>
-                </View>
-                
+                </View>    
             </FlatCard>
             </Pressable>
-        )
-        
+        )    
     }
 
 
     return (
         <>
-            <Pressable onPress={()=>setCategory("")}><Icon style={styles.icon} name='arrow-back-ios' size={30}  /></Pressable>
+            <Pressable onPress={()=>navigation.goBack()}><Icon style={styles.icon} name='arrow-back-ios' size={30}  /></Pressable>
             <Search setSearch={setSearch} />
             <Text style={styles.categoryTitle}>{category}</Text>
             
@@ -133,22 +125,6 @@ const styles = StyleSheet.create({
     price: {
         fontWeight: '800',
         fontSize: 18
-    },
-    discount: {
-        backgroundColor: colors.marronSuave,
-        padding: 8,
-        borderRadius: 12,
-        alignSelf: 'flex-start',
-        
-    },
-    discountText: {
-        color: colors.negro,
-        fontSize: 14,
-        fontWeight: 'bold',
-    },
-    discountNumber:{
-        color: colors.rojo,
-        fontSize: 16
     },
     noStockText: {
         color: colors.rojo,
